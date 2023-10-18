@@ -1,9 +1,8 @@
-
-
 # Import flask module
 from flask import Flask, render_template
 
-from data_sources.binance_ import Binance
+from binance_ import Binance
+from coinbase_ import Coinbase
 
 app = Flask(__name__)
 
@@ -11,13 +10,10 @@ app = Flask(__name__)
 @app.route('/')
 def run():
     binance_connect = Binance()
+    coinbase_connect = Coinbase()
     return render_template('index.html',
-                           time=binance_connect.get_time(),
-                           minute_kline=binance_connect.get_minute_kline(),
-                           hourly_kline=binance_connect.get_hourly_kline()
-                           # new_client_account=binance_connect.get_new_client_account(),
-                           # with_params=binance_connect.get_with_params()
-                           )
+                           bin=binance_connect.get_historical_trades(),
+                           cb=coinbase_connect.get_historical_trades())
 
 
 # main driver function

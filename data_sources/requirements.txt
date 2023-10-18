@@ -1,3 +1,4 @@
 binance-connector==3.3.1
 Flask==2.3.3
 python-binance==1.0.19
+coinbase==2.1.0

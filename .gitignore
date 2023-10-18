@@ -1,2 +1,4 @@
 ./venv
 .idea
+./ve
+data_sources/__pycache__/
