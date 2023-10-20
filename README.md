@@ -12,6 +12,6 @@ Currently focusing on BTC-USDT pairs, will be moving to other pairs soon...
 ## Setup
 Run:
 
-`docker build -t crypto-comparison .
+`docker build -t crypto-comparison .`
 
-docker run -it -p 3000:80 crypto-comparison`
+`docker run -it -p 3000:80 crypto-comparison`
