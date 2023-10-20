@@ -6,5 +6,7 @@ class Binance:
         self.client = Spot()
 
     def get_historical_trades(self):
-        return self.client.historical_trades("BTCUSDT")
-
+        prices = self.client.historical_trades("BTCUSDT")
+        return {"base": "BTC",
+                "currency": "USD",
+                "prices": [{"price": entry["price"], "time": str(entry["time"])} for entry in prices]}

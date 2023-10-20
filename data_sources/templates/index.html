@@ -1,10 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Flask Template Example</title>
+    <title>Crypto Price Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-box {
+            flex: 1;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .info-box h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-<p> coinbase:  {{cb}} </p>
-<p> binance:  {{bin}} </p>
+    <div class="container">
+        <div class="info-box coinbase-info">
+            <h2>Coinbase Data</h2>
+            <p>Base: {{ cb.base }}</p>
+            <p>Currency: {{ cb.currency }}</p>
+            <ul>
+                {% for price in cb.prices %}
+                    <li>Price: ${{ price.price }} at {{ price.time }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="info-box binance-info">
+            <h2>Binance Data</h2>
+            <p>Base: {{ bin.base }}</p>
+            <p>Currency: {{ bin.currency }}</p>
+            <ul>
+                {% for price in bin.prices %}
+                    <li>Price: ${{ price.price }} at {{ price.time }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
